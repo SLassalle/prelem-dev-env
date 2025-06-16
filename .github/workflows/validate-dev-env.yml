@@ -1,0 +1,18 @@
+name: Validate Docker Dev Environment
+
+on:
+  push:
+    branches:
+      - dev
+  pull_request:
+    branches:
+      - dev
+
+jobs:
+  validate-compose:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check docker-compose syntax
+        run: docker compose config
